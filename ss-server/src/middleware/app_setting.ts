@@ -1,4 +1,4 @@
-import * as bodyParser from 'koa-bodyparser';
+
 import * as serve from 'koa-static';
 import * as render from 'koa-swig';
 // import * as session from 'koa-generic-session';
@@ -14,10 +14,12 @@ import {config} from '../config/index';
 
 export default (app) => {
   // api - v1 的proxy
-
+ 
+  
   app.use(
     require('koa2-cors')({
       origin: function (ctx) {
+        console.log(ctx.body)
         if (ctx.url === '/test') {
           return '*';
         }
@@ -26,10 +28,12 @@ export default (app) => {
       maxAge: 5,
       credentials: true,
       allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-      allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
+      allowHeaders: ['Content-Type', 'Authorization', 'Accept','Access-Control-Allow-Origin'],
       exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
     })
   );
+ 
+  
 
   
 
@@ -43,7 +47,7 @@ export default (app) => {
       writeBody: false,
     })
   );
-  app.use(bodyParser());
+
   app.use(serve(config.STATIC_DIR));
   app.use(historyApiFallback({ index: '/ssr', whiteList: [`/${VERSION}`] }));
 

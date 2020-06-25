@@ -12,6 +12,7 @@ const sequelize = new Sequelize({
     createdAt: false,
     updatedAt: false,
     deletedAt: false,
+    
   },
 });
 

@@ -16,7 +16,7 @@ const sequelize = new Sequelize({
   },
 });
 
-sequelize.addModels([__dirname + '/../model/*.model.ts']);
+sequelize.addModels([__dirname + '/../model/*.model.*s']);
 
 import UserTable from '../model/user.model';
 // sequelize.addModels([UserTable]);
@@ -60,7 +60,7 @@ import UserTable from '../model/user.model';
 sequelize
   .authenticate()
   .then(() => {
-    console.log('Connection has been established successfully.');
+    console.log('mysql数据库链接成功');
     // sequelize.addModels([UserTable]);
     setImmediate(() => {
       // let u = new UserTable();
@@ -76,14 +76,14 @@ sequelize
       //   return user.save();
       // });
 
-      console.log(sequelize.models)
+      console.log('sequelize.models list:',sequelize.models)
 
 
 
     }, 1000);
   })
   .catch((err) => {
-    console.error('Unable to connect to the database:', err);
+    console.error('链接数据库失败', err);
   });
 
   export default sequelize;

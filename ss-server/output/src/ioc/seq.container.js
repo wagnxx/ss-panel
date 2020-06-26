@@ -13,54 +13,49 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
-var inversify_1 = require("inversify");
-var inversify_2 = require("inversify");
-var myContainer = new inversify_1.Container();
+const inversify_1 = require("inversify");
+const inversify_2 = require("inversify");
+const myContainer = new inversify_1.Container();
 // myContainer.bind('type-userTable').to(UserTable);
-var A = /** @class */ (function () {
-    function A() {
-    }
-    A.prototype.getdata = function () {
+let A = class A {
+    getdata() {
         return 'aaaaaa';
-    };
-    A = __decorate([
-        inversify_2.injectable()
-    ], A);
-    return A;
-}());
-var B = /** @class */ (function () {
-    function B(a) {
+    }
+};
+A = __decorate([
+    inversify_2.injectable()
+], A);
+let B = class B {
+    constructor(a) {
         this.a = a;
     }
-    B.prototype.log = function () {
+    log() {
         console.log(this.a.getdata());
-    };
-    B = __decorate([
-        inversify_2.injectable(),
-        __param(0, inversify_2.inject('typeA')),
-        __metadata("design:paramtypes", [Object])
-    ], B);
-    return B;
-}());
-var C = /** @class */ (function () {
-    function C(b) {
+    }
+};
+B = __decorate([
+    inversify_2.injectable(),
+    __param(0, inversify_2.inject('typeA')),
+    __metadata("design:paramtypes", [Object])
+], B);
+let C = class C {
+    constructor(b) {
         this.b = b;
     }
-    C.prototype.log = function () {
+    log() {
         console.log('以下内容是从 C 递过来的~');
         this.b.log();
-    };
-    C = __decorate([
-        inversify_2.injectable(),
-        __param(0, inversify_2.inject('typeB')),
-        __metadata("design:paramtypes", [Object])
-    ], C);
-    return C;
-}());
+    }
+};
+C = __decorate([
+    inversify_2.injectable(),
+    __param(0, inversify_2.inject('typeB')),
+    __metadata("design:paramtypes", [Object])
+], C);
 myContainer.bind('typeA').to(A);
 myContainer.bind('typeB').to(B);
 myContainer.bind('typeC').to(C);
-var b = myContainer.get('typeC');
+let b = myContainer.get('typeC');
 b.log();
 // export { myContainer };
 // 这部分在 inversify 中不兼容 ,不能实现  model -> service -> controller [ service.inject(model) controller.inject(service) ]

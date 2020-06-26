@@ -1,8 +1,8 @@
 import * as path from 'path';
 
 export const config = {
-  STATIC_DIR: path.join(__dirname, '..', 'dist'),
+  STATIC_DIR: path.join(__dirname, '../..', 'dist'),
   VIEWS_DIR: path.join(__dirname, '..', 'views'),
-  PORT: 4000,
+  PORT: 3000,
 };
  

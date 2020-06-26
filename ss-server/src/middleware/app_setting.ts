@@ -19,11 +19,10 @@ export default (app) => {
   app.use(
     require('koa2-cors')({
       origin: function (ctx) {
-        console.log(ctx.body)
         if (ctx.url === '/test') {
-          return '*';
         }
-        return 'http://localhost:8001';
+        return '*';
+        // return 'http://localhost:8001';
       },
       maxAge: 5,
       credentials: true,

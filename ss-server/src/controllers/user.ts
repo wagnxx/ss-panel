@@ -26,13 +26,10 @@ export default class UserController implements interfaces.Controller {
   private async login(ctx: Router.IRouterContext) {
     let { username, password } = ctx.request.body;
     console.log('body==:', ctx.request.body);
-    // const data = await login(username, password);
     password = genPssword(password);
 
     const data = await this.userService.getData({ username, password });
-    // console.log('data', data);
-    // ctx.body = data;
-    // return;
+
 
     if (data?.username) {
       console.log('session:=======:', ctx.session);
@@ -79,7 +76,7 @@ export default class UserController implements interfaces.Controller {
 
   @httpGet('/login-test', checkLogin)
   private async loginTest(ctx: Router.IRouterContext) {
-    console.log(ctx.session);
+ 
     ctx.body = new SuccessModel(
       {
         session: ctx.session,

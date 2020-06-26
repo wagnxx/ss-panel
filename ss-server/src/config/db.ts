@@ -45,4 +45,7 @@ if (env === 'docker') {
   // MYSQL_CONF.host = 'redis';
 }
 
+console.log('mysql的配置项',REDIS_CONF)
+console.log('redis的配置项',REDIS_CONF)
+
 export { MYSQL_CONF, REDIS_CONF };

@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Router = void 0;
+var inversify_1 = require("inversify");
+Object.defineProperty(exports, "Container", { enumerable: true, get: function () { return inversify_1.Container; } });
+Object.defineProperty(exports, "inject", { enumerable: true, get: function () { return inversify_1.inject; } });
+var inversify_binding_decorators_1 = require("inversify-binding-decorators");
+Object.defineProperty(exports, "buildProviderModule", { enumerable: true, get: function () { return inversify_binding_decorators_1.buildProviderModule; } });
+Object.defineProperty(exports, "fluentProvide", { enumerable: true, get: function () { return inversify_binding_decorators_1.fluentProvide; } });
+var inversify_koa_utils_1 = require("inversify-koa-utils");
+Object.defineProperty(exports, "controller", { enumerable: true, get: function () { return inversify_koa_utils_1.controller; } });
+Object.defineProperty(exports, "TYPE", { enumerable: true, get: function () { return inversify_koa_utils_1.TYPE; } });
+Object.defineProperty(exports, "httpGet", { enumerable: true, get: function () { return inversify_koa_utils_1.httpGet; } });
+Object.defineProperty(exports, "httpPost", { enumerable: true, get: function () { return inversify_koa_utils_1.httpPost; } });
+Object.defineProperty(exports, "InversifyKoaServer", { enumerable: true, get: function () { return inversify_koa_utils_1.InversifyKoaServer; } });
+const Router = require("koa-router");
+exports.Router = Router;

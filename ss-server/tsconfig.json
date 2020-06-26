@@ -1,18 +1,11 @@
-// {
-//     "compilerOptions": {
-//         "experimentalDecorators": true,
-//         "allowJs": true,
-//         "emitDecoratorMetadata": true,
-//         "target": "ES6",
-//     },
-//     "include": [
-//         "src/**/*",
-//     ],
-// }
 {
   "compileOnSave": true,
   "compilerOptions": {
+    "module": "commonjs",
     "target": "es6",
+    "moduleResolution": "node",
+    "lib": ["es5", "dom"],
+ 
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "rootDir": "./",
@@ -20,10 +13,9 @@
     "typeRoots" : ["./typings"]
   },
   "include": [
-    "src/**/*",
+    "src/**/*"
   ],
   "exclude": [
-  
     "**/*.spec.ts",
     "dist",
     "output"

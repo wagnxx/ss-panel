@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var sequelize_typescript_1 = require("sequelize-typescript");
-var db_1 = require("./db");
-var sequelize = new sequelize_typescript_1.Sequelize({
+const sequelize_typescript_1 = require("sequelize-typescript");
+const db_1 = require("./db");
+const sequelize = new sequelize_typescript_1.Sequelize({
     database: db_1.MYSQL_CONF.database,
-    host: '192.168.1.112 ',
+    host: db_1.MYSQL_CONF.host,
     dialect: 'mysql',
-    username: 'root',
-    password: 'root',
+    username: db_1.MYSQL_CONF.user,
+    password: db_1.MYSQL_CONF.password,
     storage: ':memory:',
     // models: [__dirname + '/models'], // or [Player, Team],
     define: {
@@ -16,7 +16,7 @@ var sequelize = new sequelize_typescript_1.Sequelize({
         deletedAt: false,
     },
 });
-sequelize.addModels([__dirname + '/../model/*.model.ts']);
+sequelize.addModels([__dirname + '/../model/*.model.*s']);
 // sequelize.addModels([UserTable]);
 // setImmediate(() => {
 //  UserTable.create({
@@ -52,10 +52,10 @@ sequelize.addModels([__dirname + '/../model/*.model.ts']);
 //  )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 sequelize
     .authenticate()
-    .then(function () {
-    console.log('Connection has been established successfully.');
+    .then(() => {
+    console.log('mysql数据库链接成功');
     // sequelize.addModels([UserTable]);
-    setImmediate(function () {
+    setImmediate(() => {
         // let u = new UserTable();
         // u.$get('uname').then((res) => {
         //   console.log(res);
@@ -67,10 +67,10 @@ sequelize
         //   console.log(user);
         //   return user.save();
         // });
-        console.log(sequelize.models);
+        console.log('sequelize.models list:', sequelize.models);
     }, 1000);
 })
-    .catch(function (err) {
-    console.error('Unable to connect to the database:', err);
+    .catch((err) => {
+    console.error('链接数据库失败', err);
 });
 exports.default = sequelize;
